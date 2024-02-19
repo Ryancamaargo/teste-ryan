@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Entradas e Saídas</title>
+</head>
+<body>
+    <h1>Relatório de Entradas e Saídas</h1>
+    <h2>Entradas de Ração:</h2>
+    <ul id="entradasRacao">
+        <!-- Aqui será preenchido dinamicamente com as entradas de ração -->
+    </ul>
+
+    <h2>Saídas de Ração:</h2>
+    <ul id="saidasRacao">
+        <!-- Aqui será preenchido dinamicamente com as saídas de ração -->
+    </ul>
+
+    <h2>Quantidade Total de Ração Atualizada:</h2>
+    <p id="quantidadeTotalRacao"></p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var entradasRacao = localStorage.getItem('entradasRacao');
+            var saidasRacao = localStorage.getItem('saidasRacao');
+            var quantidadeRacao = localStorage.getItem('quantidadeRacao') || 0;
+
+            if (entradasRacao) {
+                var entradas = JSON.parse(entradasRacao);
+                var listaEntradas = document.getElementById('entradasRacao');
+
+                entradas.forEach(function(entrada) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = `Entrada: ${entrada.quantidade} - Data: ${entrada.data}`;
+                    listaEntradas.appendChild(listItem);
+                });
+            }
+
+            if (saidasRacao) {
+                var saidas = JSON.parse(saidasRacao);
+                var listaSaidas = document.getElementById('saidasRacao');
+
+                saidas.forEach(function(saida) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = `Saída para ${saida.descricao}: ${saida.quantidade} - Data: ${saida.data}`;
+                    listaSaidas.appendChild(listItem);
+                });
+            }
+
+            document.getElementById('quantidadeTotalRacao').textContent = quantidadeRacao;
+        });
+    </script>
+</body>
+</html>

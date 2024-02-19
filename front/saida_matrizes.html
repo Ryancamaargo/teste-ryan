@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saída para Matrizes</title>
+</head>
+<body>
+    <h1>Saída para Matrizes</h1>
+    <label for="quantidade">Quantidade de Ração para Matrizes:</label>
+    <input type="number" id="quantidade">
+    <button onclick="processarSaida('matrizes')">Registrar Saída</button>
+
+    <script>
+        function processarSaida(destino) {
+            var quantidade = document.getElementById('quantidade').value;
+            var totalRacao = localStorage.getItem('quantidadeRacao');
+            
+            if (totalRacao === null || totalRacao === undefined) {
+                alert('Não há quantidade suficiente de ração disponível.');
+                return;
+            }
+
+            totalRacao = parseInt(totalRacao);
+
+            if (quantidade > totalRacao) {
+                alert('Quantidade de ração insuficiente.');
+                return;
+            }
+
+            // Atualiza a quantidade de ração no localStorage
+            localStorage.setItem('quantidadeRacao', totalRacao - quantidade);
+
+            // Salva a saída no array de saídas
+            var saidasRacao = localStorage.getItem('saidasRacao');
+            var novaSaida = {
+                descricao: 'matrizes',
+                quantidade: quantidade,
+                data: new Date().toLocaleString()
+            };
+            var saidasArray = saidasRacao ? JSON.parse(saidasRacao) : [];
+            saidasArray.push(novaSaida);
+            localStorage.setItem('saidasRacao', JSON.stringify(saidasArray));
+
+            alert('Saída de ração para matrizes registrada com sucesso.');
+        }
+    </script>
+</body>
+</html>

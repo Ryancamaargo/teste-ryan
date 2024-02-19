@@ -1,0 +1,43 @@
+Questão: Desenvolvimento de Sistema de Suinocultura
+Você deve criar um sistema web para gerenciamento de suinocultura que atenda aos requisitos especificados abaixo.
+
+Requisitos Funcionais:
+
+Entrada de Ração:
+Crie uma página que permita a entrada da quantidade de ração recebida.
+
+
+Distribuição para Matrizes:
+Crie uma página que permita a distribuição da ração para as matrizes, indicando a quantidade a ser fornecida para cada matriz.
+
+
+Distribuição para Berçário e Machos:
+Crie páginas distintas para a distribuição de ração no berçário e para os machos, com a capacidade de inserir a quantidade específica para cada um.
+Atualize o estoque de ração no banco de dados.
+
+Controle de Estoque:
+Mantenha um controle de estoque atualizado no banco de dados.
+
+
+Relatório Diário:
+Crie uma página que exiba um relatório diário com a quantidade total de ração fornecida e a quantidade restante no estoque.
+
+Semáforo de Entrada de Ração:
+Implemente um semáforo na página de entrada de ração que mude de cor conforme a quantidade de ração inserida, indicando visualmente se a quantidade é 
+suficiente (verde), moderada (amarelo) ou insuficiente (vermelho).
+
+Requisitos Técnicos:
+Use HTML, CSS e JavaScript para a construção da interface.
+
+Utilize um banco de dados para armazenar as informações sobre ração, distribuição, estoque e relatórios.
+
+Use AJAX para comunicação assíncrona com o servidor.
+
+
+
+model / tabela
+
+estoque = salva entradas e saidas de racao (data, quantidade, tipo(entrada, saida))
+
+animal (tipo(matriz, barçario, machos), numero, quantidade racao)
+
